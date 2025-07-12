@@ -329,6 +329,7 @@
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="box">
                 <input type="hidden" name="_subject" value="Nova mensagem do site!">
+                <input type="hidden" name="_next" value="https://corder03.github.io/RamonaAlien/">
                 
                 <!-- Campos do Formulário -->
                 <div class="mb-4">
@@ -378,18 +379,16 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
         // Envia o formulário de verdade
         this.submit();
         
-        // Feedback (será substituído pelo redirecionamento do FormSubmit)
+        // Feedback instantâneo
         btn.innerHTML = '<i class="fas fa-check mr-2"></i> Mensagem Enviada!';
         alertDiv.classList.remove('hidden');
         alertDiv.classList.add('bg-[#2cb67d]/20', 'text-[#2cb67d]');
-        alertDiv.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Sua mensagem foi transmitida com sucesso!';
+        alertDiv.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Redirecionando...';
         
-        // Reseta após 5 segundos (caso o redirecionamento falhe)
+        // Redireciona após 2 segundos (backup caso o FormSubmit falhe)
         setTimeout(() => {
-            this.reset();
-            btn.disabled = false;
-            btn.innerHTML = 'Enviar Transmissão';
-        }, 5000);
+            window.location.href = "https://corder03.github.io/RamonaAlien/";
+        }, 2000);
     }, 1500);
 });
 </script>
