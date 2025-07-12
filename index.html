@@ -330,6 +330,7 @@
                 <input type="hidden" name="_template" value="box">
                 <input type="hidden" name="_subject" value="Nova mensagem do site!">
                 <input type="hidden" name="_next" value="https://corder03.github.io/RamonaAlien/">
+                <input type="hidden" name="_autoresponse" value="Sua mensagem foi recebida pela nave-mãe! Em breve entrarei em contato pelo seu canal de comunicação preferido.">
                 
                 <!-- Campos do Formulário -->
                 <div class="mb-4">
@@ -364,32 +365,54 @@
 <!-- Scripts Necessários -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 <script>
-// Controle do Formulário
 document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
     const alertDiv = document.getElementById('form-alert');
-    
+    const formData = new FormData(this);
+
+    // Validação dos campos
+    if (!formData.get('name') || !formData.get('email') || !formData.get('message')) {
+        alertDiv.classList.remove('hidden');
+        alertDiv.classList.add('bg-[#e53170]/20', 'text-[#e53170]');
+        alertDiv.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i> Preencha todos os campos!';
+        return;
+    }
+
     // Feedback visual
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Enviando...';
-    
-    // Simula delay para melhor UX
-    setTimeout(() => {
-        // Envia o formulário de verdade
-        this.submit();
-        
-        // Feedback instantâneo
-        btn.innerHTML = '<i class="fas fa-check mr-2"></i> Mensagem Enviada!';
+    alertDiv.classList.add('hidden');
+
+    // Envio assíncrono com fetch
+    fetch(this.action, {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => {
+        if (response.ok) {
+            // Sucesso
+            btn.innerHTML = '<i class="fas fa-check mr-2"></i> Mensagem Enviada!';
+            alertDiv.classList.remove('hidden');
+            alertDiv.classList.add('bg-[#2cb67d]/20', 'text-[#2cb67d]');
+            alertDiv.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Redirecionando...';
+            
+            // Redirecionamento após 2 segundos (backup)
+            setTimeout(() => {
+                window.location.href = "https://corder03.github.io/RamonaAlien/";
+            }, 2000);
+        } else {
+            throw new Error('Falha no envio');
+        }
+    })
+    .catch(error => {
+        // Tratamento de erro
         alertDiv.classList.remove('hidden');
-        alertDiv.classList.add('bg-[#2cb67d]/20', 'text-[#2cb67d]');
-        alertDiv.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Redirecionando...';
-        
-        // Redireciona após 2 segundos (backup caso o FormSubmit falhe)
-        setTimeout(() => {
-            window.location.href = "https://corder03.github.io/RamonaAlien/";
-        }, 2000);
-    }, 1500);
+        alertDiv.classList.add('bg-[#e53170]/20', 'text-[#e53170]');
+        alertDiv.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i> Erro ao enviar. Tente novamente!';
+        btn.disabled = false;
+        btn.innerHTML = 'Enviar Transmissão';
+    });
 });
 </script>
         <!-- Rodapé -->
