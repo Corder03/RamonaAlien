@@ -286,11 +286,11 @@
             </div>
         </section>
 
-
-        <!-- Canal de Comunicação -->
+<!-- Seção de Comunicação -->
 <section id="contact" class="mb-24">
     <h2 class="text-3xl font-bold mb-6 gradient-text">Canal de Comunicação</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Contatos Diretos -->
         <div>
             <p class="text-lg mb-6 text-[#a7a9be]">
                 Para entrar em contato com minha nave-mãe, utilize um dos seguintes métodos:
@@ -316,101 +316,83 @@
                 </li>
             </ul>
         </div>
+        
+        <!-- Formulário de Contato Funcional -->
         <div class="bg-[#0f0e17] p-6 rounded-lg border border-[#2cb67d]/30">
             <h3 class="text-xl font-bold mb-4 text-[#2cb67d]">Mensagem Instantânea</h3>
-            <form id="contact-form">
+            <form 
+                id="contact-form" 
+                action="https://formsubmit.co/pomanhagamer2@gmail.com" 
+                method="POST"
+            >
+                <!-- Configurações do FormSubmit -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="box">
+                <input type="hidden" name="_subject" value="Nova mensagem do site!">
+                
+                <!-- Campos do Formulário -->
                 <div class="mb-4">
                     <label for="name" class="block text-[#a7a9be] mb-2">Seu Nome</label>
-                    <input type="text" id="name" name="name" required 
+                    <input type="text" id="name" name="name" required
                            class="w-full bg-[#16161a] border border-[#7f5af0]/30 rounded-lg px-4 py-2 text-[#fffffe] focus:outline-none focus:ring-2 focus:ring-[#7f5af0]">
                 </div>
+                
                 <div class="mb-4">
                     <label for="email" class="block text-[#a7a9be] mb-2">Seu E-mail</label>
-                    <input type="email" id="email" name="email" required 
+                    <input type="email" id="email" name="email" required
                            class="w-full bg-[#16161a] border border-[#7f5af0]/30 rounded-lg px-4 py-2 text-[#fffffe] focus:outline-none focus:ring-2 focus:ring-[#7f5af0]">
                 </div>
+                
                 <div class="mb-4">
                     <label for="message" class="block text-[#a7a9be] mb-2">Sua Mensagem</label>
-                    <textarea id="message" name="message" required 
+                    <textarea id="message" name="message" required
                               class="w-full bg-[#16161a] border border-[#7f5af0]/30 rounded-lg px-4 py-2 text-[#fffffe] focus:outline-none focus:ring-2 focus:ring-[#7f5af0] h-32"></textarea>
                 </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-[#2cb67d] to-[#7f5af0] py-3 rounded-lg font-bold hover:opacity-90 transition-opacity">
+                
+                <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-[#2cb67d] to-[#7f5af0] py-3 rounded-lg font-bold hover:opacity-90 transition-opacity">
                     Enviar Transmissão
                 </button>
             </form>
             
-            <div id="form-success" class="hidden mt-4 p-4 bg-[#2cb67d]/20 text-[#2cb67d] rounded-lg">
-                <i class="fas fa-check-circle mr-2"></i> Mensagem transmitida com sucesso!
-            </div>
-            <div id="form-error" class="hidden mt-4 p-4 bg-[#e53170]/20 text-[#e53170] rounded-lg">
-                <i class="fas fa-exclamation-circle mr-2"></i> <span id="error-message">Falha na transmissão. Tente novamente.</span>
-            </div>
+            <!-- Feedback de Envio -->
+            <div id="form-alert" class="hidden mt-4 p-4 rounded-lg text-center"></div>
         </div>
     </div>
 </section>
 
-<!-- Adicione o SDK do EmailJS -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
+<!-- Scripts Necessários -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 <script>
-// Inicialize o EmailJS com seu User ID
-emailjs.init('SEU_USER_ID_DO_EMAILJS');
-
-document.getElementById('contact-form').addEventListener('submit', async (e) => {
+// Controle do Formulário
+document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    const alertDiv = document.getElementById('form-alert');
     
-    const form = e.target;
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const successDiv = document.getElementById('form-success');
-    const errorDiv = document.getElementById('form-error');
-    const errorMessage = document.getElementById('error-message');
+    // Feedback visual
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Enviando...';
     
-    // Mostrar estado de carregamento
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Enviando...';
-    
-    // Esconder mensagens anteriores
-    successDiv.classList.add('hidden');
-    errorDiv.classList.add('hidden');
-    
-    try {
-        // Envie o email usando EmailJS
-        const response = await emailjs.sendForm(
-            'SEU_SERVICE_ID', // Service ID do EmailJS
-            'SEU_TEMPLATE_ID', // Template ID do EmailJS
-            form,
-            'SEU_USER_ID' // User ID do EmailJS
-        );
+    // Simula delay para melhor UX
+    setTimeout(() => {
+        // Envia o formulário de verdade
+        this.submit();
         
-        if (response.status === 200) {
-            // Mostrar mensagem de sucesso
-            successDiv.classList.remove('hidden');
-            form.reset();
-            
-            // Rolagem suave para a mensagem
-            successDiv.scrollIntoView({ behavior: 'smooth' });
-            
-            // Esconder mensagem após 5 segundos
-            setTimeout(() => {
-                successDiv.classList.add('hidden');
-            }, 5000);
-        } else {
-            throw new Error('Erro ao enviar mensagem');
-        }
-    } catch (error) {
-        // Mostrar mensagem de erro específica
-        console.error('Erro detalhado:', error);
-        errorMessage.textContent = error.text || "Falha na transmissão. Tente novamente mais tarde.";
-        errorDiv.classList.remove('hidden');
-        errorDiv.scrollIntoView({ behavior: 'smooth' });
-    } finally {
-        // Restaurar botão
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Enviar Transmissão';
-    }
+        // Feedback (será substituído pelo redirecionamento do FormSubmit)
+        btn.innerHTML = '<i class="fas fa-check mr-2"></i> Mensagem Enviada!';
+        alertDiv.classList.remove('hidden');
+        alertDiv.classList.add('bg-[#2cb67d]/20', 'text-[#2cb67d]');
+        alertDiv.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Sua mensagem foi transmitida com sucesso!';
+        
+        // Reseta após 5 segundos (caso o redirecionamento falhe)
+        setTimeout(() => {
+            this.reset();
+            btn.disabled = false;
+            btn.innerHTML = 'Enviar Transmissão';
+        }, 5000);
+    }, 1500);
 });
 </script>
-
         <!-- Rodapé -->
         <footer class="mt-24 pt-8 border-t border-[#7f5af0]/20 text-center text-[#a7a9be]">
             <div class="flex justify-center space-x-6 mb-6">
