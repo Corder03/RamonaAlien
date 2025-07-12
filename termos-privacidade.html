@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos e Privacidade | Ramona</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #0f0e17;
+            color: #fffffe;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #8f06ff, #e53170, #7f5af0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(1px);
+        }
+        .back-btn {
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body class="min-h-screen overflow-x-hidden">
+    <!-- Fundo Espacial -->
+    <div id="space-background" class="fixed inset-0 overflow-hidden z-0"></div>
+
+    <!-- Conteúdo Principal -->
+    <div class="relative z-10 container mx-auto px-4 py-12">
+        <!-- Botão Voltar -->
+        <div class="mb-12">
+            <a href="index.html" class="back-btn inline-flex items-center text-[#7f5af0] hover:text-[#e53170] transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Voltar para o Portfólio
+            </a>
+        </div>
+
+        <!-- Cabeçalho -->
+        <header class="mb-16 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 gradient-text">Termos e Política de Privacidade</h1>
+            <p class="text-xl text-[#a7a9be]">Informações legais da Ramona Art Intergaláctica</p>
+        </header>
+
+        <!-- Termos de Serviço -->
+        <section class="mb-24 bg-[#16161a]/50 p-8 rounded-xl border border-[#7f5af0]/30">
+            <h2 class="text-3xl font-bold mb-6 text-[#7f5af0]">Termos de Serviço</h2>
+            
+            <div class="space-y-6 text-[#a7a9be]">
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-[#fffffe]">1. Aceitação dos Termos</h3>
+                    <p>Ao encomendar arte através da Ramona Art Intergaláctica, você concorda com estes Termos de Serviço. Estes termos aplicam-se a todas as commissions e serviços oferecidos.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-[#fffffe]">2. Processo de Commission</h3>
+                    <p>2.1. O cliente deve fornecer referências claras e descrição detalhada do projeto.<br>
+                    2.2. Ramona fornecerá esboços iniciais para aprovação antes do trabalho final.<br>
+                    2.3. Alterações significativas após aprovação podem acarretar custos adicionais.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-[#fffffe]">3. Pagamentos</h3>
+                    <p>3.1. O pagamento é dividido em duas partes: 50% no início e 50% na entrega.<br>
+                    3.2. Aceitamos Pix Terrestre.<br>
+                    3.3. Reembolsos são avaliados caso a caso antes da fase de finalização.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-[#fffffe]">4. Direitos Autorais</h3>
+                    <p>4.1. O cliente recebe direitos de uso pessoal da obra finalizada.<br>
+                    4.2. Direitos comerciais requerem licença adicional (+30% do valor base).<br>
+                    4.3. Ramona mantém o direito de exibir a obra em seu portfólio.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Política de Privacidade -->
+        <section class="mb-24 bg-[#16161a]/50 p-8 rounded-xl border border-[#ff8906]/30">
+            <h2 class="text-3xl font-bold mb-6 text-[#ff8906]">Política de Privacidade</h2>
+            
+            <div class="space-y-6 text-[#a7a9be]">
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-[#fffffe]">1. Informações Coletadas</h3>
+                    <p>Coletamos apenas informações necessárias para processar sua commission: nome, email, descrição do projeto e referências visuais. Não armazenamos dados de pagamento.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-[#fffffe]">2. Uso das Informações</h3>
+                    <p>2.1. Seus dados são usados exclusivamente para comunicação sobre seu projeto.<br>
+                    2.2. Não compartilhamos suas informações com terceiros sem consentimento.<br>
+                    2.3. Podemos usar seu email para atualizações sobre serviços, que podem ser desativadas a qualquer momento.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-[#fffffe]">3. Segurança</h3>
+                    <p>3.1. Implementamos protocolos de segurança quântica para proteger seus dados.<br>
+                    3.2. Comunicações são criptografadas durante transmissão intergaláctica.<br>
+                    3.3. Apesar disso, nenhum sistema é 100% seguro em todas as dimensões.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-[#fffffe]">4. Alterações na Política</h3>
+                    <p>Esta política pode ser atualizada para refletir mudanças em nossas práticas. Alterações significativas serão comunicadas através de transmissão quântica.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato para Dúvidas -->
+        <section class="text-center">
+            <h3 class="text-2xl font-bold mb-4 text-[#fffffe]">Dúvidas sobre nossos Termos ou Privacidade?</h3>
+            <p class="text-lg mb-6 text-[#a7a9be]">Entre em contato através do Canal de Comunicação em nosso portfólio</p>
+            <a href="index.html#contact" class="inline-block px-6 py-3 bg-gradient-to-r from-[#7f5af0] to-[#2cb67d] rounded-lg font-bold hover:opacity-90 transition-opacity">
+                Ir para Contato
+            </a>
+        </section>
+    </div>
+
+    <script>
+        // Criar estrelas e planetas no fundo
+        document.addEventListener('DOMContentLoaded', function() {
+            const spaceBackground = document.getElementById('space-background');
+            
+            // Criar estrelas
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = `${Math.random() * 3}px`;
+                star.style.height = star.style.width;
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.top = `${Math.random() * 100}vh`;
+                star.style.setProperty('--duration', `${2 + Math.random() * 3}s`);
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                spaceBackground.appendChild(star);
+            }
+            
+            // Criar planetas
+            const colors = ['#7f5af0', '#e53170', '#ff8906', '#2cb67d'];
+            for (let i = 0; i < 4; i++) {
+                const planet = document.createElement('div');
+                planet.className = 'planet';
+                const size = 50 + Math.random() * 100;
+                planet.style.width = `${size}px`;
+                planet.style.height = `${size}px`;
+                planet.style.left = `${Math.random() * 90}vw`;
+                planet.style.top = `${Math.random() * 90}vh`;
+                planet.style.background = `radial-gradient(circle at 30% 30%, ${colors[i % colors.length]}, ${colors[(i + 1) % colors.length]})`;
+                planet.style.opacity = '0.2';
+                spaceBackground.appendChild(planet);
+            }
+            
+            // Efeito de parallax no fundo
+            window.addEventListener('mousemove', (e) => {
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                spaceBackground.style.transform = `translate(-${x * 15}px, -${y * 15}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

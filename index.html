@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Artístico Alienígena</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #0f0e17;
+            color: #fffffe;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #9322c0, #e53170, #5a5ff0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(1px);
+        }
+        .artwork-card {
+            transition: all 0.3s ease;
+            background: rgba(15, 14, 23, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        .artwork-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(231, 76, 60, 0.1), 0 10px 10px -5px rgba(231, 76, 60, 0.04);
+        }
+        .counter-item {
+            transition: all 0.5s ease;
+        }
+        .counter-item:hover {
+            transform: scale(1.05);
+        }
+        .faq-question {
+            transition: all 0.3s ease;
+        }
+        .faq-question:hover {
+            color: #ff8906;
+        }
+    </style>
+</head>
+<body class="min-h-screen overflow-x-hidden">
+    <!-- Fundo Espacial -->
+    <div id="space-background" class="fixed inset-0 overflow-hidden z-0"></div>
+
+    <!-- Conteúdo Principal -->
+    <div class="relative z-10 container mx-auto px-4 py-12">
+        <!-- Cabeçalho -->
+        <header class="flex flex-col md:flex-row justify-between items-center mb-16">
+            <div class="mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-6xl font-bold mb-2 gradient-text">Ramona</h1>
+                <p class="text-xl text-[#a7a9be]">Artista Intergaláctica</p>
+            </div>
+            <button id="commission-btn" class="px-8 py-4 bg-gradient-to-r from-[#ff8906] to-[#e53170] rounded-full text-lg font-bold hover:scale-105 transition-transform duration-300 shadow-lg shadow-[#e53170]/30">
+                Faço Commission art aqui!
+            </button>
+        </header>
+
+        <!-- Sobre -->
+        <section id="about" class="mb-24">
+            <h2 class="text-3xl font-bold mb-6 gradient-text">Sobre Mim</h2>
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="md:w-1/3 flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 rounded-full bg-gradient-to-br from-[#7f5af0] to-[#e53170] p-1">
+                            <img src="alien.png" alt="Avatar Alienígena" class="w-full h-full rounded-full border-4 border-[#0f0e17]">
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 bg-[#e53170] text-[#fffffe] px-4 py-2 rounded-full font-bold">
+                            👽 Artista Alien
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-2/3">
+                    <p class="text-lg mb-4 text-[#a7a9be]">
+                        Olá, terrestres! Eu sou Ramona, uma artista viajante do sistema estelar SAZA. 
+                        Minha arte combina técnicas intergalácticas com inspirações dos muitos planetas que visitei.
+                    </p>
+                    <p class="text-lg mb-4 text-[#a7a9be]">
+                        Minhas obras exploram a conexão entre dimensões, a beleza dos buracos de minhoca e 
+                        a energia pura das nebulosas. Cada peça contém um fragmento da essência cósmica.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="px-4 py-2 bg-[#7f5af0]/20 text-[#7f5af0] rounded-full">Arte Digital</span>
+                        <span class="px-4 py-2 bg-[#e53170]/20 text-[#e53170] rounded-full">Pintura Dimensional</span>
+                        <span class="px-4 py-2 bg-[#ff8906]/20 text-[#ff8906] rounded-full">Escultura de Plasma</span>
+                        <span class="px-4 py-2 bg-[#2cb67d]/20 text-[#2cb67d] rounded-full">Holografia Quântica</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contador de Commissions -->
+        <section class="mb-24 bg-[#16161a] py-12 rounded-xl border border-[#7f5af0]/20">
+            <div class="flex flex-col md:flex-row justify-around items-center text-center gap-8">
+                <div class="counter-item">
+                    <div class="text-5xl font-bold text-[#ff8906] mb-2" id="completed-commissions">38</div>
+                    <div class="text-lg text-[#a7a9be]">Commissions Concluídas</div>
+                </div>
+                <div class="counter-item">
+                    <div class="text-5xl font-bold text-[#e53170] mb-2" id="happy-clients">98%</div>
+                    <div class="text-lg text-[#a7a9be]">Clientes Satisfeitos</div>
+                </div>
+                <div class="counter-item">
+                    <div class="text-5xl font-bold text-[#7f5af0] mb-2" id="galaxies-reached">14</div>
+                    <div class="text-lg text-[#a7a9be]">Galáxias Alcançadas</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria -->
+        <section id="gallery" class="mb-24">
+            <h2 class="text-3xl font-bold mb-6 gradient-text">Galeria Intergaláctica</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Obra 1 -->
+                <div class="artwork-card rounded-xl overflow-hidden border border-[#7f5af0]/30">
+                    <img src="https://placehold.co/600x400/0f0e17/7f5af0?text=Nebulosa+Onírica" alt="Nebulosa Onírica" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[#fffffe]">Nebulosa Onírica</h3>
+                        <p class="text-[#a7a9be] mb-4">Pintura dimensional capturando os sonhos das estrelas recém-nascidas.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-[#ff8906]">2024</span>
+                            <button class="text-[#7f5af0] hover:text-[#ff8906] transition-colors">Ver detalhes →</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Obra 2 -->
+                <div class="artwork-card rounded-xl overflow-hidden border border-[#e53170]/30">
+                    <img src="https://placehold.co/600x400/0f0e17/e53170?text=Portal+Quântico" alt="Portal Quântico" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[#fffffe]">Portal Quântico</h3>
+                        <p class="text-[#a7a9be] mb-4">Representação holográfica de um vórtice interdimensional.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-[#ff8906]">2024</span>
+                            <button class="text-[#e53170] hover:text-[#ff8906] transition-colors">Ver detalhes →</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Obra 3 -->
+                <div class="artwork-card rounded-xl overflow-hidden border border-[#ff8906]/30">
+                    <img src="https://placehold.co/600x400/0f0e17/ff8906?text=Cidade+de+Cristal" alt="Cidade de Cristal" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[#fffffe]">Cidade de Cristal</h3>
+                        <p class="text-[#a7a9be] mb-4">Metrópole alienígena esculpida em plasma solidificado.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-[#ff8906]">2024</span>
+                            <button class="text-[#ff8906] hover:text-[#e53170] transition-colors">Ver detalhes →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Depoimentos Intergalácticos -->
+        <section id="depoimento" class="mb-24">
+            <h2 class="text-3xl font-bold mb-6 gradient-text">Depoimentos Intergalácticos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Depoimento 1 -->
+                <div class="bg-[#16161a] p-6 rounded-xl border border-[#ff8906]/30">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-[#ff8906] flex items-center justify-center text-xl font-bold mr-4">K</div>
+                        <div>
+                            <h4 class="font-bold text-[#fffffe]">Korvax-7</h4>
+                            <div class="flex text-[#ff8906]">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[#a7a9be] italic">
+                        "Ramona capturou perfeitamente a essência de minha espécie em um retrato que agora adorna minha nave-mãe. A atenção aos detalhes anatômicos foi excepcional!"
+                    </p>
+                </div>
+                
+                <!-- Depoimento 2 -->
+                <div class="bg-[#16161a] p-6 rounded-xl border border-[#7f5af0]/30">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-[#7f5af0] flex items-center justify-center text-xl font-bold mr-4">N</div>
+                        <div>
+                            <h4 class="font-bold text-[#fffffe]">Nyxara</h4>
+                            <div class="flex text-[#ff8906]">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[#a7a9be] italic">
+                        "Encomendei uma série de concept arts para meu jogo intergaláctico e fiquei maravilhada com a criatividade e qualidade. Ramona entendeu perfeitamente minha visão!"
+                    </p>
+                </div>
+                
+                <!-- Depoimento 3 -->
+                <div class="bg-[#16161a] p-6 rounded-xl border border-[#e53170]/30">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-[#e53170] flex items-center justify-center text-xl font-bold mr-4">T</div>
+                        <div>
+                            <h4 class="font-bold text-[#fffffe]">Terra-3</h4>
+                            <div class="flex text-[#ff8906]">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[#a7a9be] italic">
+                        "Como fã de ficção científica, encomendei uma cena espacial épica e Ramona superou todas as expectativas. A obra é o centro das atenções na minha coleção!"
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Perguntas Frequentes -->
+        <section class="mb-24">
+            <h2 class="text-3xl font-bold mb-6 gradient-text">Perguntas Frequentes</h2>
+            <div class="space-y-4">
+                <!-- Pergunta 1 -->
+                <div class="border-b border-[#7f5af0]/30 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left">
+                        <h3 class="text-xl font-bold text-[#fffffe]">Como funciona o processo de commission?</h3>
+                        <i class="fas fa-chevron-down text-[#a7a9be]"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-[#a7a9be] hidden">
+                        <p>Meu processo é simples: 1) Você envia seu pedido através do botão de encomenda; 2) Discutimos os detalhes e orçamento; 3) Eu crio esboços iniciais para aprovação; 4) Desenvolvo a arte final; 5) Você recebe a obra em alta resolução. Todo o processo leva de 1 a 3 semanas dependendo da complexidade.</p>
+                    </div>
+                </div>
+                
+                <!-- Pergunta 2 -->
+                <div class="border-b border-[#7f5af0]/30 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left">
+                        <h3 class="text-xl font-bold text-[#fffffe]">Quais métodos de pagamento você aceita?</h3>
+                        <i class="fas fa-chevron-down text-[#a7a9be]"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-[#a7a9be] hidden">
+                        <p>Aceito diversos métodos de pagamento interestelares: Créditos Galácticos (CG) via Transferência Quântica, Pix Terrestre e outros.</p>
+                    </div>
+                </div>
+                
+                <!-- Pergunta 3 -->
+                <div class="border-b border-[#7f5af0]/30 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left">
+                        <h3 class="text-xl font-bold text-[#fffffe]">Posso usar a arte para fins comerciais?</h3>
+                        <i class="fas fa-chevron-down text-[#a7a9be]"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-[#a7a9be] hidden">
+                        <p>Sim, ofereço licenças comerciais com um acréscimo de 30% ao valor base. Com a licença comercial, você pode usar a arte em produtos, jogos, livros e outras mídias. Sem a licença, a arte é apenas para uso pessoal.</p>
+                    </div>
+                </div>
+                
+                <!-- Pergunta 4 -->
+                <div class="border-b border-[#7f5af0]/30 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left">
+                        <h3 class="text-xl font-bold text-[#fffffe]">E se eu não gostar do resultado final?</h3>
+                        <i class="fas fa-chevron-down text-[#a7a9be]"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-[#a7a9be] hidden">
+                        <p>Garanto sua satisfação! Durante o processo, você terá oportunidades de revisão para ajustar a arte conforme necessário. Se, após todas as revisões, você ainda não estiver satisfeito, ofereço reembolso proporcional ou crédito para futuras commissions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Canal de Comunicação -->
+<section id="contact" class="mb-24">
+    <h2 class="text-3xl font-bold mb-6 gradient-text">Canal de Comunicação</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+            <p class="text-lg mb-6 text-[#a7a9be]">
+                Para entrar em contato com minha nave-mãe, utilize um dos seguintes métodos:
+            </p>
+            <ul class="space-y-4">
+                <li class="flex items-center">
+                    <div class="bg-[#ff8906] p-3 rounded-full mr-4">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <span class="text-[#fffffe]">ramonaalien@gmail.com</span>
+                </li>
+                <li class="flex items-center">
+                    <div class="bg-[#e53170] p-3 rounded-full mr-4">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <span class="text-[#fffffe]">ZyxaraArt#7429</span>
+                </li>
+                <li class="flex items-center">
+                    <div class="bg-[#7f5af0] p-3 rounded-full mr-4">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <span class="text-[#fffffe]">@Zyxara_Art</span>
+                </li>
+            </ul>
+        </div>
+        <div class="bg-[#0f0e17] p-6 rounded-lg border border-[#2cb67d]/30">
+            <h3 class="text-xl font-bold mb-4 text-[#2cb67d]">Mensagem Instantânea</h3>
+            <form id="contact-form">
+                <div class="mb-4">
+                    <label for="name" class="block text-[#a7a9be] mb-2">Seu Nome</label>
+                    <input type="text" id="name" name="name" required 
+                           class="w-full bg-[#16161a] border border-[#7f5af0]/30 rounded-lg px-4 py-2 text-[#fffffe] focus:outline-none focus:ring-2 focus:ring-[#7f5af0]">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-[#a7a9be] mb-2">Seu E-mail</label>
+                    <input type="email" id="email" name="email" required 
+                           class="w-full bg-[#16161a] border border-[#7f5af0]/30 rounded-lg px-4 py-2 text-[#fffffe] focus:outline-none focus:ring-2 focus:ring-[#7f5af0]">
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-[#a7a9be] mb-2">Sua Mensagem</label>
+                    <textarea id="message" name="message" required 
+                              class="w-full bg-[#16161a] border border-[#7f5af0]/30 rounded-lg px-4 py-2 text-[#fffffe] focus:outline-none focus:ring-2 focus:ring-[#7f5af0] h-32"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-[#2cb67d] to-[#7f5af0] py-3 rounded-lg font-bold hover:opacity-90 transition-opacity">
+                    Enviar Transmissão
+                </button>
+            </form>
+            
+            <div id="form-success" class="hidden mt-4 p-4 bg-[#2cb67d]/20 text-[#2cb67d] rounded-lg">
+                <i class="fas fa-check-circle mr-2"></i> Mensagem transmitida com sucesso!
+            </div>
+            <div id="form-error" class="hidden mt-4 p-4 bg-[#e53170]/20 text-[#e53170] rounded-lg">
+                <i class="fas fa-exclamation-circle mr-2"></i> <span id="error-message">Falha na transmissão. Tente novamente.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Adicione o SDK do EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+// Inicialize o EmailJS com seu User ID
+emailjs.init('SEU_USER_ID_DO_EMAILJS');
+
+document.getElementById('contact-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const form = e.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const successDiv = document.getElementById('form-success');
+    const errorDiv = document.getElementById('form-error');
+    const errorMessage = document.getElementById('error-message');
+    
+    // Mostrar estado de carregamento
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Enviando...';
+    
+    // Esconder mensagens anteriores
+    successDiv.classList.add('hidden');
+    errorDiv.classList.add('hidden');
+    
+    try {
+        // Envie o email usando EmailJS
+        const response = await emailjs.sendForm(
+            'SEU_SERVICE_ID', // Service ID do EmailJS
+            'SEU_TEMPLATE_ID', // Template ID do EmailJS
+            form,
+            'SEU_USER_ID' // User ID do EmailJS
+        );
+        
+        if (response.status === 200) {
+            // Mostrar mensagem de sucesso
+            successDiv.classList.remove('hidden');
+            form.reset();
+            
+            // Rolagem suave para a mensagem
+            successDiv.scrollIntoView({ behavior: 'smooth' });
+            
+            // Esconder mensagem após 5 segundos
+            setTimeout(() => {
+                successDiv.classList.add('hidden');
+            }, 5000);
+        } else {
+            throw new Error('Erro ao enviar mensagem');
+        }
+    } catch (error) {
+        // Mostrar mensagem de erro específica
+        console.error('Erro detalhado:', error);
+        errorMessage.textContent = error.text || "Falha na transmissão. Tente novamente mais tarde.";
+        errorDiv.classList.remove('hidden');
+        errorDiv.scrollIntoView({ behavior: 'smooth' });
+    } finally {
+        // Restaurar botão
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Enviar Transmissão';
+    }
+});
+</script>
+
+        <!-- Rodapé -->
+        <footer class="mt-24 pt-8 border-t border-[#7f5af0]/20 text-center text-[#a7a9be]">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#about" class="text-[#a7a9be] hover:text-[#ff8906] transition-colors">Sobre</a>
+                <a href="#gallery" class="text-[#a7a9be] hover:text-[#ff8906] transition-colors">Galeria</a>
+                <a href="#commission" class="commission-footer-btn text-[#a7a9be] hover:text-[#ff8906] transition-colors">Commissions</a>
+                <a href="#depoimento" class="text-[#a7a9be] hover:text-[#ff8906] transition-colors">Depoimentos</a>
+                <a href="#contact" class="text-[#a7a9be] hover:text-[#ff8906] transition-colors">Contato</a>
+                <a href="termos-privacidade.html" class="text-[#a7a9be] hover:text-[#ff8906] transition-colors">Termos</a>
+                <a href="termos-privacidade.html" class="text-[#a7a9be] hover:text-[#ff8906] transition-colors">Privacidade</a>
+            </div>
+            <p>© 2025 Ramona Art Intergaláctica. Todos os direitos reservados em todas as dimensões conhecidas e desconhecidas.</p>
+            <p class="mt-2 text-sm">Nave mãe atualmente orbitando o sistema solar Terra-3, Via Láctea.</p>
+        </footer>
+    </div>
+
+    <!-- Modal de Commission -->
+    <div id="commission-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+        <div class="bg-[#16161a] rounded-xl max-w-md w-full p-8 relative border-2 border-[#ff8906]">
+            <button id="close-modal" class="absolute top-4 right-4 text-[#a7a9be] hover:text-[#fffffe]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h3 class="text-2xl font-bold mb-4 gradient-text">Encomendar Arte</h3>
+            <p class="text-[#a7a9be] mb-6">Preencha este formulário para iniciar seu pedido de arte intergaláctica!</p>
+            <form>
+                <div class="mb-4">
+                    <label class="block text-[#a7a9be] mb-2">Tipo de Arte</label>
+                    <select class="w-full bg-[#0f0e17] border border-[#7f5af0]/30 rounded-lg px-4 py-2 text-[#fffffe] focus:outline-none focus:ring-2 focus:ring-[#7f5af0]">
+                        <option>Retrato Alienígena</option>
+                        <option>Paisagem Planetária</option>
+                        <option>Nave Espacial</option>
+                        <option>Criatura Interestelar</option>
+                        <option>Outro</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-[#a7a9be] mb-2">Descrição</label>
+                    <textarea class="w-full bg-[#0f0e17] border border-[#7f5af0]/30 rounded-lg px-4 py-2 text-[#fffffe] focus:outline-none focus:ring-2 focus:ring-[#7f5af0] h-24"></textarea>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-[#a7a9be] mb-2">Orçamento (em Créditos Galácticos)</label>
+                    <input type="range" min="100" max="1000" step="50" class="w-full accent-[#ff8906]">
+                    <div class="flex justify-between text-sm text-[#a7a9be] mt-1">
+                        <span>100</span>
+                        <span>1000</span>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-[#ff8906] to-[#e53170] py-3 rounded-lg font-bold hover:opacity-90 transition-opacity">Enviar Pedido</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal de commission
+const commissionBtns = document.querySelectorAll('#commission-btn, #commission-btn-2, .commission-footer-btn');
+const modal = document.getElementById('commission-modal');
+const closeModal = document.getElementById('close-modal');
+
+commissionBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        // Previne o comportamento padrão se for um link âncora
+        if(btn.tagName === 'A' && btn.getAttribute('href') === '#commission') {
+            e.preventDefault();
+        }
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Impede scroll do body quando modal está aberto
+    });
+});
+
+closeModal.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    document.body.style.overflow = 'auto'; // Restaura scroll do body
+});
+        // Criar estrelas e planetas no fundo
+        document.addEventListener('DOMContentLoaded', function() {
+            const spaceBackground = document.getElementById('space-background');
+            
+            // Criar estrelas
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = `${Math.random() * 3}px`;
+                star.style.height = star.style.width;
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.top = `${Math.random() * 100}vh`;
+                star.style.setProperty('--duration', `${2 + Math.random() * 3}s`);
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                spaceBackground.appendChild(star);
+            }
+            
+            // Criar planetas
+            const colors = ['#7f5af0', '#e53170', '#ff8906', '#2cb67d'];
+            for (let i = 0; i < 5; i++) {
+                const planet = document.createElement('div');
+                planet.className = 'planet';
+                const size = 50 + Math.random() * 150;
+                planet.style.width = `${size}px`;
+                planet.style.height = `${size}px`;
+                planet.style.left = `${Math.random() * 90}vw`;
+                planet.style.top = `${Math.random() * 90}vh`;
+                planet.style.background = `radial-gradient(circle at 30% 30%, ${colors[i % colors.length]}, ${colors[(i + 1) % colors.length]})`;
+                planet.style.opacity = '0.3';
+                spaceBackground.appendChild(planet);
+            }
+            
+            // Modal de commission
+            const commissionBtns = document.querySelectorAll('#commission-btn, #commission-btn-2');
+            const modal = document.getElementById('commission-modal');
+            const closeModal = document.getElementById('close-modal');
+            
+            commissionBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    modal.classList.remove('hidden');
+                });
+            });
+            
+            closeModal.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+            
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const icon = question.querySelector('i');
+                    
+                    // Toggle answer
+                    answer.classList.toggle('hidden');
+                    
+                    // Rotate icon
+                    if (answer.classList.contains('hidden')) {
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+            
+            // Animação dos contadores
+            function animateValue(id, start, end, duration) {
+                const obj = document.getElementById(id);
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    obj.innerHTML = Math.floor(progress * (end - start) + start) + (id === 'happy-clients' ? '%' : '');
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+            
+            // Iniciar contadores quando a seção for visível
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateValue('completed-commissions', 0, 127, 2000);
+                        animateValue('happy-clients', 0, 98, 2000);
+                        animateValue('galaxies-reached', 0, 14, 2000);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {threshold: 0.5});
+            
+            const counterSection = document.querySelector('.bg-[#16161a]');
+            if (counterSection) {
+                observer.observe(counterSection);
+            }
+            
+            // Efeito de parallax no fundo
+            window.addEventListener('mousemove', (e) => {
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                spaceBackground.style.transform = `translate(-${x * 20}px, -${y * 20}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
