@@ -287,6 +287,7 @@
         </section>
 
 <!-- Seção de Comunicação -->
+<!-- Seção de Comunicação -->
 <section id="contact" class="mb-24">
     <h2 class="text-3xl font-bold mb-6 gradient-text">Canal de Comunicação</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -327,7 +328,7 @@
             >
                 <!-- Configurações do FormSubmit -->
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="box">
+                <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_subject" value="✨ Nova mensagem do site de Ramona Alien!">
                 <input type="hidden" name="_next" value="https://corder03.github.io/RamonaAlien/">
                 <input type="hidden" name="_autoresponse" value="subject:Obrigada por entrar em contato!|html:<!DOCTYPE html>
@@ -336,36 +337,55 @@
     <style>
         body { font-family: 'Arial', sans-serif; color: #333; line-height: 1.6; }
         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        .header { background-color: #7f5af0; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
+        .header { background-color: #0f0e17; color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; background-image: linear-gradient(135deg, #7f5af0 0%, #0f0e17 100%); }
         .content { padding: 30px; background-color: #f9f9f9; border-radius: 0 0 8px 8px; }
         .footer { margin-top: 20px; font-size: 12px; text-align: center; color: #777; }
-        .button { display: inline-block; padding: 10px 20px; background-color: #2cb67d; color: white; text-decoration: none; border-radius: 5px; margin-top: 15px; }
+        .button { display: inline-block; padding: 12px 24px; background: linear-gradient(90deg, #ff8906, #e53170); color: white; text-decoration: none; border-radius: 30px; margin-top: 15px; font-weight: bold; }
+        .message-box { background: #fff; border-left: 4px solid #7f5af0; padding: 15px; margin: 15px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .social-links { margin-top: 20px; }
+        .social-link { display: inline-block; margin: 0 10px; color: #7f5af0; text-decoration: none; }
+        .alien-icon { font-size: 24px; vertical-align: middle; margin-right: 5px; }
+        .gradient-text { background: linear-gradient(90deg, #ff8906, #e53170); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
 <body>
     <div class='container'>
         <div class='header'>
-            <h1>🛸 Mensagem Recebida!</h1>
+            <h1 style='font-size: 28px; margin: 0;'><span class='alien-icon'>👽</span> <span class='gradient-text'>Mensagem Recebida!</span></h1>
+            <p style='opacity: 0.8; margin-top: 10px;'>Sua transmissão intergaláctica chegou com sucesso!</p>
         </div>
         <div class='content'>
             <p>Olá <strong>{{name}}</strong>,</p>
-            <p>Sua mensagem foi recebida pela nave-mãe com sucesso!</p>
-            <p>Estarei analisando sua transmissão intergaláctica e responderei o mais rápido possível.</p>
-            <p><strong>Detalhes da sua mensagem:</strong></p>
-            <blockquote style='background: #eee; padding: 10px; border-left: 3px solid #7f5af0;'>
-                {{message}}
-            </blockquote>
-            <p>Caso precise entrar em contato novamente, responda este e-mail ou use um dos canais abaixo:</p>
-            <ul>
-                <li>Email: ramonaalien@gmail.com</li>
-                <li>Discord: ZyxaraArt#7429</li>
-                <li>Twitter: @Zyxara_Art</li>
+            <p>Sua mensagem foi recebida pela nave-mãe com sucesso! Estarei analisando sua transmissão e responderei o mais rápido possível.</p>
+            
+            <div class='message-box'>
+                <p style='margin: 0;'><strong>Sua mensagem:</strong></p>
+                <p style='margin: 10px 0 0 0;'>{{message}}</p>
+            </div>
+            
+            <p><strong>Detalhes do contato:</strong></p>
+            <ul style='margin: 10px 0; padding-left: 20px;'>
+                <li><strong>Email:</strong> {{email}}</li>
+                <li><strong>Data:</strong> {{date}}</li>
             </ul>
-            <p>Com amor interestelar,</p>
-            <p><strong>Ramona Alien</strong> 👽</p>
+            
+            <p>Se precisar entrar em contato novamente, você pode:</p>
+            <div class='social-links'>
+                <a href='mailto:ramonaalien@gmail.com' class='button' style='background: linear-gradient(90deg, #7f5af0, #2cb67d);'>Responder este email</a>
+            </div>
+            
+            <p style='margin-top: 30px;'>Com amor interestelar,</p>
+            <p style='font-size: 18px; font-weight: bold;'><span class='alien-icon'>👽</span> <span class='gradient-text'>Ramona Alien</span></p>
+            
+            <div class='social-links'>
+                <a href='https://discord.com' class='social-link' style='color: #e53170;'><i class='fab fa-discord'></i> Discord</a>
+                <a href='https://twitter.com' class='social-link' style='color: #7f5af0;'><i class='fab fa-twitter'></i> Twitter</a>
+                <a href='https://instagram.com' class='social-link' style='color: #ff8906;'><i class='fab fa-instagram'></i> Instagram</a>
+            </div>
         </div>
         <div class='footer'>
-            <p>Esta é uma mensagem automática, por favor não responda diretamente.</p>
+            <p>Esta é uma mensagem automática - por favor não responda diretamente a este e-mail.</p>
+            <p>© 2025 Ramona Art Intergaláctica. Todos os direitos reservados em todas as dimensões.</p>
         </div>
     </div>
 </body>
